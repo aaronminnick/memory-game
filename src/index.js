@@ -14,6 +14,12 @@ $("#game-board").html(generateBoard(game));
 
 let counter = 0;
 $(".card").on("click", function(){
-  $(this.firstChild).show();
+  let card = $(this.firstChild);
+  card.show();
+  game.addCurrentCard(card.id);
   
-});
+  if (game.incrementCounter() === 2) {
+    game.compareCards();
+    // checkformatched(game);
+  }
+})
