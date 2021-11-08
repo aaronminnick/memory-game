@@ -12,17 +12,10 @@ Game.prototype.addCard = function(card) {
 };
 
 Game.prototype.generateCards = function() {
-  let valueArray = ['a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'f', 'f', 'g', 'g', 'h', 'h'];
+  let valueArray = ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H'];
   for (let i = 0; i < 16; i++) {
     let valueIndex = Math.round(Math.random() * (valueArray.length-1));
     this.addCard(new Card(valueArray[valueIndex]));
     valueArray.splice(valueIndex, 1);
   }
-}
-
-Game.prototype.generateBoard = function() {
-  let htmlString= "";
-  // some kind of algorithm to make board
-
-  return htmlString;
 };

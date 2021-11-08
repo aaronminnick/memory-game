@@ -1,4 +1,4 @@
-function generateBoard(game){
+export function generateBoard(game){
   let htmlForGameBoard = "";  
   for (let i = 0; i < 16; i++){
     if(i === 0){
