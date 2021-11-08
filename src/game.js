@@ -14,7 +14,7 @@ Game.prototype.addCard = function(card) {
 Game.prototype.generateCards = function() {
   let valueArray = ['a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'f', 'f', 'g', 'g', 'h', 'h'];
   for (let i = 0; i < 16; i++) {
-    let valueIndex = Math.floor(Math.random() * (valueArray.length-1));
+    let valueIndex = Math.round(Math.random() * (valueArray.length-1));
     this.addCard(new Card(valueArray[valueIndex]));
     valueArray.splice(valueIndex, 1);
   }
