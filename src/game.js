@@ -27,14 +27,17 @@ Game.prototype.addCurrentCard = function(key){
 Game.prototype.incrementCounter = function () {
   this.counter += 1;
   return this.counter;
-}
+};
 
 Game.prototype.compareCards = function () {
   let card1 = this.cards[this.currentCards[0]];
   let card2 = this.cards[this.currentCards[1]];
   if (card1.value === card2.value){
-    card1.value = true;
-    card2.value = true;
+    card1.matched = true;
+    card2.matched = true;
+  } else {
+    card1.displayed = false;
+    card2.displayed = false;
   }
   this.counter = 0;
   this.currentCards = [];
@@ -43,4 +46,5 @@ Game.prototype.compareCards = function () {
 function Card(value) {
   this.value = value;
   this.matched = false;
-}
+  this.displayed = false;
+};

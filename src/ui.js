@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 export function generateBoard(game){
   let htmlForGameBoard = "";  
   for (let i = 0; i < 16; i++){
@@ -12,5 +14,13 @@ export function generateBoard(game){
     }
   }
   return htmlForGameBoard;
+}
+
+export function reHideCard(game) {
+  for (let i = 0; i < 16; i++) {
+    if(!game.cards[i].matched) {
+      $("#" + i.toString()).delay(750).fadeOut();
+    }
+  }
 }
 

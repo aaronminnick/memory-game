@@ -2,7 +2,7 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import {generateBoard} from './ui.js';
+import {generateBoard, reHideCard} from './ui.js';
 
 import Game from './game.js';
 
@@ -12,14 +12,15 @@ game.generateCards();
 
 $("#game-board").html(generateBoard(game));
 
-let counter = 0;
-$(".card").on("click", function(){
+$(".card").on("click", function() {
   let card = $(this.firstChild);
-  card.show();
-  game.addCurrentCard(card.id);
-  
-  if (game.incrementCounter() === 2) {
-    game.compareCards();
-    // checkformatched(game);
+  if(!game.cards[card.attr("id")].displayed) {
+    card.show();
+    game.addCurrentCard(card.attr("id"));
+    game.cards[card.attr("id")].displayed = true;
+    if (game.incrementCounter() === 2) {
+      game.compareCards();
+      reHideCard(game);
+    }
   }
-})
+});
